@@ -1,5 +1,5 @@
 ---
-title: "R-Ladies Mid-Mo"
+title: "R-Ladies Mid-Mo: Plotting in R"
 author: "Maggie Suero"
 date: "10/6/2020"
 output: html_document
@@ -53,6 +53,13 @@ p +  geom_point(aes(shape = species, color = species, size = 1.5))
 
 ## Shape & color manually
 
+You can set manually the color you want to use, with 5 different [methods](https://www.r-graph-gallery.com/ggplot2-color.html):  
+ 
+  * _Name_:  The most common method. R offers about 657 color [name](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+  * _rgb()_: This function allows to build a color using red, green and blue values. [RGB colors](https://www.rapidtables.com/web/color/RGB_Color.html)
+  * _Number_: You can call a color directly by its number (`colors()[143]`).
+  * _Hex code_: All colors can be defined by their hex code. [Color Picker](https://htmlcolorcodes.com/)
+
 ```{r}
 p +  geom_point(aes(shape = species, color = species)) + 
   scale_shape_manual(values = c(15, 16, 17)) +
@@ -61,6 +68,7 @@ p +  geom_point(aes(shape = species, color = species)) +
 
 ## Alpha
 
+Alpha represents the opacity of the geom elements in the plot. 
 ```{r}
 p +  geom_point(aes(color = species), alpha = 0.6) + 
   scale_color_manual(values = c("darkmagenta", "deeppink", "maroon")) 
@@ -158,8 +166,10 @@ plot + theme_bw()
 Other Resources:
 
 [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#fig:shapes)
+[R Graphics Cookbook](https://r-graphics.org/)
 [ggplot](https://ggplot2.tidyverse.org/index.html)
 [Data Visualization with ggplot2](https://viz-ggplot2.rsquaredacademy.com/index.html)
 [Data Visualization with R](https://rkabacoff.github.io/datavis/)
 [Sthda](http://www.sthda.com/english/wiki/ggplot2-point-shapes)
 [Datanovia](https://www.datanovia.com)
+[Colors](http://html-color-codes.com/)
