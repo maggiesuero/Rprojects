@@ -1,3 +1,3 @@
 # R Projects
 
-My R Projects, presentations in R-Ladies Meetups and other kind of meetings.
+My R Projects, R-Ladies meetups presentations and other kind of R-related code.
