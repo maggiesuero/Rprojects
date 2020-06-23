@@ -36,12 +36,12 @@ p <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g))
 p + geom_point()
 ```
 
-
 # Customizing your plots
 
 ## Shape (scatterplots)
 
-You can customize the shape of the points with 25 different options ![shapes](https://d33wubrfki0l68.cloudfront.net/58a48d625b4bd494cd685dd9998f5c74e9c16907/211c6/visualize_files/figure-html/shapes-1.png) [Source.](https://r4ds.had.co.nz) Other [shape](https://ggplot2.tidyverse.org/reference/scale_shape.html) options.
+You can customize the shape of the points with 25 different options ![shapes](https://d33wubrfki0l68.cloudfront.net/58a48d625b4bd494cd685dd9998f5c74e9c16907/211c6/visualize_files/figure-html/shapes-1.png) [Source.](https://r4ds.had.co.nz).
+Other [shape](https://ggplot2.tidyverse.org/reference/scale_shape.html) options.
 
 ```{r }
 p +  geom_point(shape = 23, fill = "violet", color = "black", size = 2.5)
@@ -93,7 +93,6 @@ pt <- p + geom_point(aes(color = species)) +
 pt
 ```
 
-
 ### Viridis
 
 viridis colormaps: "magma" (or "A"), "inferno" ("B"), "plasma" ("C"), "viridis" ("D"), and "cividis" ("E") 
@@ -118,8 +117,6 @@ c(0,0) corresponds to the “bottom left” and c(1,1) corresponds to the “top
 pt + theme(legend.position = "top")
 # pt + theme(legend.position = c(0, 0.9))
 ```
-
-
 
 ## Remove legend, axis titles & axis ticks
 
@@ -152,7 +149,6 @@ plot + theme(plot.title = element_text(hjust = 0.5, face = "bold"),
 
 ```
 
-
 ## Adding a theme
 
 There are many different themes you can use in ggplot2. [Here](https://ggplot2.tidyverse.org/reference/ggtheme.html) is a list of the basic options.
@@ -161,9 +157,7 @@ There are many different themes you can use in ggplot2. [Here](https://ggplot2.t
 plot + theme_bw()
 ```
 
-
-
-Other Resources:
+__Other Resources:__
 
 [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#fig:shapes)
 [R Graphics Cookbook](https://r-graphics.org/)
