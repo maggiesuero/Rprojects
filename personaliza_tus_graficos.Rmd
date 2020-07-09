@@ -15,6 +15,10 @@ library(dplyr)
 
 Vamos a utilizar el [dataset](https://github.com/allisonhorst/palmerpenguins) de Pingüinos de Palmer. 
 Estos datos fueron recogidos y están disponibles gracias a la Dra. Kristen Gorman y la Estación Palmer de la Antártida (Palmer Station, Antarctica LTER).
+```{r}
+citation("palmerpenguins")
+```
+
 
 Empecemos conociendo a los pingüinos _(Artwork by @allison_horst)_:
 
@@ -56,8 +60,9 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 ## Forma (para gráficos de dispersión)
 
-Puedes personalizar la forma de los "puntos" de los gráficos de dispersión utilizando cualquiera de las 25 opciones disponibles ![shapes](https://d33wubrfki0l68.cloudfront.net/58a48d625b4bd494cd685dd9998f5c74e9c16907/211c6/visualize_files/figure-html/shapes-1.png) [Fuente](https://r4ds.had.co.nz).
-Otras opciones de [formas](https://ggplot2.tidyverse.org/reference/scale_shape.html).
+Puedes personalizar la forma de los "puntos" de los gráficos de dispersión utilizando cualquiera de las 25 opciones disponibles 
+
+![Formas](https://es.r4ds.hadley.nz/03-visualize_files/figure-html/shapes-1.png) [Fuente](https://es.r4ds.hadley.nz/visualizaci%C3%B3n-de-datos.html).
 
 ```{r }
 #.... y agrandamos el tamaño de los puntos
@@ -252,10 +257,15 @@ grafico <- ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g))
 
 grafico
 ```
+```{r}
+
+```
+
+
 
 __Otros recursos:__
 
-- [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#fig:shapes)
+- [R para Ciencia de Datos](https://es.r4ds.hadley.nz/visualizaci%C3%B3n-de-datos.html)
 
 - [R Graphics Cookbook](https://r-graphics.org/)
 
