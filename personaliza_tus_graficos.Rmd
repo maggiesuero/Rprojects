@@ -243,7 +243,7 @@ Tenemos muchas opciones disponibles para elegir como tema en ggplot2. [Aquí](ht
 
 ```{r}
 
-grafico <- ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
+grafico_pinguinos <- ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(color = species)) + 
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
   labs(title = "Tamaño de los pingüinos, Estación Palmer LTER",
@@ -255,12 +255,33 @@ grafico <- ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g))
   theme(plot.title = element_text(hjust = 0.5, face = "bold"),
         plot.subtitle = element_text(hjust = 0.5, face = "italic"))
 
-grafico
+grafico_pinguinos
 ```
+
+## cómo guardar tu gráfico
+
 ```{r}
-
+ggsave("C:/Users/Maggie/OneDrive/aR/Rprojects/grafico_pinguinos.png", grafico_pinguinos, width = 7, height = 6)
 ```
 
+## Extra: cómo resaltar los gráficos
+
+```{r}
+library(gghighlight)
+
+ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point() + 
+  theme_bw() +
+  gghighlight(sex == "FEMALE") +
+  geom_point(color = "deeppink") +
+  labs(title = "Tamaño de los pingüinos, Estación Palmer LTER",
+       subtitle = "Largo de la aleta y masa corporal por especie",
+       x = "largo aleta (mm)",
+       y = "masa corporal (g)") + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        plot.subtitle = element_text(hjust = 0.5, face = "italic"))
+
+```
 
 
 __Otros recursos:__
