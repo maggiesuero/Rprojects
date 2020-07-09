@@ -275,7 +275,7 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
   gghighlight(sex == "FEMALE") +
   geom_point(color = "deeppink") +
   labs(title = "Tamaño de los pingüinos, Estación Palmer LTER",
-       subtitle = "Largo de la aleta y masa corporal por especie",
+       subtitle = "Largo de la aleta y masa corporal, resaltado en hembras",
        x = "largo aleta (mm)",
        y = "masa corporal (g)") + 
   theme(plot.title = element_text(hjust = 0.5, face = "bold"),
