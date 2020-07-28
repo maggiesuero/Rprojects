@@ -2,7 +2,7 @@
 title: "R-Ladies Mid-Mo: Plotting in R"
 author: "Maggie Suero"
 date: "10/6/2020"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -14,9 +14,13 @@ library(dplyr)
 We are going to use the Palmer Penguins [dataset](https://github.com/allisonhorst/palmerpenguins). 
 The data were collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER.
 
+```{r, include=FALSE}
+citation("palmerpenguins")
+```
+
 Let's start by knowing the penguins _(Artwork by @allison_horst)_:
 
-![Palmer penguins](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/vignettes/articles/img/lter_penguins.png) 
+![Palmer penguins](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png) 
 
 
 ```{r dataset, include=FALSE}
@@ -27,12 +31,11 @@ library(palmerpenguins)
 
 penguins <- na.omit(penguins)
 ```
-_Basic plot_
+## Basic plot
 
 ```{r}
 p <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) 
   
-
 p + geom_point()
 ```
 
@@ -63,7 +66,7 @@ You can set manually the color you want to use, with 5 different [methods](https
 ```{r}
 p +  geom_point(aes(shape = species, color = species)) + 
   scale_shape_manual(values = c(15, 16, 17)) +
-  scale_color_manual(values = c("darkmagenta", "deeppink", "maroon")) 
+  scale_color_manual(values = c("darkorange","purple","cyan4")) 
 ```
 
 ## Alpha
@@ -71,7 +74,7 @@ p +  geom_point(aes(shape = species, color = species)) +
 Alpha represents the opacity of the geom elements in the plot. 
 ```{r}
 p +  geom_point(aes(color = species), alpha = 0.6) + 
-  scale_color_manual(values = c("darkmagenta", "deeppink", "maroon")) 
+  scale_color_manual(values = c("darkorange","purple","cyan4")) 
   
 ```
 
@@ -87,10 +90,9 @@ display.brewer.all()
 Change manually [Color Brewer Palette](https://colorbrewer2.org)
 
 ```{r}
-pt <- p + geom_point(aes(color = species)) +
+p + geom_point(aes(color = species)) +
   scale_color_brewer(palette = "Dark2")
 
-pt
 ```
 
 ### Viridis
@@ -114,6 +116,9 @@ They can also be a numeric vector c(x,y) with values between 0 and 1.
 c(0,0) corresponds to the “bottom left” and c(1,1) corresponds to the “top right” position
 
 ```{r}
+pt <- p +  geom_point(aes(color = species)) + 
+  scale_color_manual(values = c("darkorange","purple","cyan4")) 
+
 pt + theme(legend.position = "top")
 # pt + theme(legend.position = c(0, 0.9))
 ```
