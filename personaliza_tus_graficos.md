@@ -1,70 +1,52 @@
----
-title: "Personaliza tus gráficos"
-author: "Maggie Suero"
-date: "6/7/2020"
-output: github_document
----
+Personaliza tus gráficos
+================
+Maggie Suero
+6/7/2020
 
 # Personaliza tus gráficos
 
-```{r setup, include=FALSE}
-## Cargamos los paquetes que vamos a emplear para hacer los gráficos y para poder hacer arreglos en los datos
-library(ggplot2)
-library(dplyr)
-```
+Vamos a utilizar el
+[dataset](https://github.com/allisonhorst/palmerpenguins) de Pingüinos
+de Palmer. Estos datos fueron recogidos y están disponibles gracias a la
+Dra. Kristen Gorman y la Estación Palmer de la Antártida (Palmer
+Station, Antarctica LTER).
 
-Vamos a utilizar el [dataset](https://github.com/allisonhorst/palmerpenguins) de Pingüinos de Palmer. 
-Estos datos fueron recogidos y están disponibles gracias a la Dra. Kristen Gorman y la Estación Palmer de la Antártida (Palmer Station, Antarctica LTER).
-```{r, include=FALSE}
-citation("palmerpenguins")
-```
+Empecemos conociendo a los pingüinos *(Artwork by @allison\_horst)*:
 
+![Palmer
+penguins](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png)
 
-Empecemos conociendo a los pingüinos _(Artwork by @allison_horst)_:
+*Gráfico básico*
 
-![Palmer penguins](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png) 
-
-
-```{r dataset, include=FALSE}
-# Necesitamos instalar el paquete "remotes" para poder acceder al paquete que no está en el CRAN
-# install.packages("remotes")
-library(remotes)
-
-# Instalamos el paquete "allisonhorst/palmerpenguins" y cargamos la base de datos "palmerpenguins"
-# remotes::install_github("allisonhorst/palmerpenguins")
-library(palmerpenguins) 
-
-# Omitimos los valores perdidos 
-pinguinos <- na.omit(penguins)
-```
-_Gráfico básico_
-
-```{r}
+``` r
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point()
-
 ```
+
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 ## Agregando un título principal y modificando los títulos de los ejes
 
-```{r}
+``` r
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point() +
   labs(title = "Tamaño de los pingüinos, Estación Palmer LTER",
        subtitle = "Largo de la aleta y masa corporal por especie",
        x = "largo aleta (mm)",
        y = "masa corporal (g)")
-
 ```
 
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 ## Forma (para gráficos de dispersión)
 
-Puedes personalizar la forma de los "puntos" de los gráficos de dispersión utilizando cualquiera de las 25 opciones disponibles 
+Puedes personalizar la forma de los “puntos” de los gráficos de
+dispersión utilizando cualquiera de las 25 opciones disponibles
 
-![Formas](https://es.r4ds.hadley.nz/03-visualize_files/figure-html/shapes-1.png) [Fuente](https://es.r4ds.hadley.nz/visualizaci%C3%B3n-de-datos.html).
+![Formas](https://es.r4ds.hadley.nz/03-visualize_files/figure-html/shapes-1.png)
+[Fuente](https://es.r4ds.hadley.nz/visualizaci%C3%B3n-de-datos.html).
 
-```{r }
+``` r
 #.... y agrandamos el tamaño de los puntos
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(shape = 23, fill = "violet", color = "black", size = 2.5) +
@@ -72,10 +54,11 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        subtitle = "Largo de la aleta y masa corporal por especie",
        x = "largo aleta (mm)",
        y = "masa corporal (g)")  
-
 ```
 
-```{r}
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+``` r
 # Agregamos la opción de seleccionar la forma de acuerdo a las respuesta de la variable 
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(shape = species, color = species)) +
@@ -83,20 +66,31 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        subtitle = "Largo de la aleta y masa corporal por especie",
        x = "largo aleta (mm)",
        y = "masa corporal (g)")
-
 ```
 
-## Establecer el color manualmente 
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
-Podemos establecer manualmente el color que queramos utilizar en los gráficos, de 5 [maneras](https://www.r-graph-gallery.com/ggplot2-color.html) diferentes:  
- 
-  * _Por nombre_: es el método más común. R ofrece 657 colores para elegir [nombre](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
-  * _rgb()_: esta función permite elegir colores utilizando los valores de rojos ("R" - red), verdes ("G" - green) y azules ("B" - blue). [RGB colors](https://www.rapidtables.com/web/color/RGB_Color.html)
-  * _Numérica_: se puede llamar directamente al color por su número, por ejemplo `colors()[143]`.
-  * _Código hexadecimal_: se puede utilizar los valores de los códigos hex. [Color Picker](https://htmlcolorcodes.com/)
+## Establecer el color manualmente
 
-```{r}
+Podemos establecer manualmente el color que queramos utilizar en los
+gráficos, de 5
+[maneras](https://www.r-graph-gallery.com/ggplot2-color.html)
+diferentes:
 
+  - *Por nombre*: es el método más común. R ofrece 657 colores para
+    elegir
+    [nombre](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+  - *rgb()*: esta función permite elegir colores utilizando los valores
+    de rojos (“R” - red), verdes (“G” - green) y azules (“B” - blue).
+    [RGB colors](https://www.rapidtables.com/web/color/RGB_Color.html)
+  - *Numérica*: se puede llamar directamente al color por su número, por
+    ejemplo `colors()[143]`.
+  - *Código hexadecimal*: se puede utilizar los valores de los códigos
+    hex. [Color Picker](https://htmlcolorcodes.com/)
+
+<!-- end list -->
+
+``` r
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(color = species)) + 
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
@@ -105,16 +99,17 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        x = "largo aleta (mm)",
        y = "masa corporal (g)",
        color = "Especie")
-
-
 ```
+
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ## Alpha
 
-Alpha representa la opacidad o transparencia de los elementos del geom en el gráfico.
-Los valores van del 0 (totalmente transparente) al 1 (totalmente visible).
-```{r}
+Alpha representa la opacidad o transparencia de los elementos del geom
+en el gráfico. Los valores van del 0 (totalmente transparente) al 1
+(totalmente visible).
 
+``` r
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(color = species), alpha = 0.6) + 
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
@@ -123,25 +118,28 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        x = "largo aleta (mm)",
        y = "masa corporal (g)",
        color = "Especie")
-  
 ```
+
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ## Paleta de colores
 
 ### RColorBrewer
 
-```{r}
+``` r
 library(RColorBrewer)
 
 # Nos muestra todas las paletas de colores Brewer
 display.brewer.all()
 ```
 
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
-Si queremos elegir manualmente alguno de los colores de esta [paleta](https://colorbrewer2.org) se puede buscar el código del color deseado o de lo contrario optar por una paleta completa
+Si queremos elegir manualmente alguno de los colores de esta
+[paleta](https://colorbrewer2.org) se puede buscar el código del color
+deseado o de lo contrario optar por una paleta completa
 
-```{r}
-
+``` r
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(color = species)) +
   scale_color_brewer(palette = "Set2") +
@@ -150,16 +148,21 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        x = "largo aleta (mm)",
        y = "masa corporal (g)",
        color = "Especie")
-
 ```
+
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 ### Viridis
 
-Las opciones de colores de la paleta de Viridis son: "magma" ("A"), "inferno" ("B"), "plasma" ("C"), "viridis" ("D"), and "cividis" ("E").
-Podemos elegir la dirección de los colores con "direction". Por defecto, "direction = 1", por lo que los colores están ordenados de oscuros a claros. Si la cambiamos a "direction = -1", los invertimos.
-La paleta también permite elegir en qué color queremos comenzar y terminar, modificando los parámetros "begin" y "end" con valores de 0 a 1.
+Las opciones de colores de la paleta de Viridis son: “magma” (“A”),
+“inferno” (“B”), “plasma” (“C”), “viridis” (“D”), and “cividis” (“E”).
+Podemos elegir la dirección de los colores con “direction”. Por defecto,
+“direction = 1”, por lo que los colores están ordenados de oscuros a
+claros. Si la cambiamos a “direction = -1”, los invertimos. La paleta
+también permite elegir en qué color queremos comenzar y terminar,
+modificando los parámetros “begin” y “end” con valores de 0 a 1.
 
-```{r}
+``` r
 library(viridisLite)
 library(viridis)
 
@@ -172,21 +175,21 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        x = "largo aleta (mm)",
        y = "masa corporal (g)",
        color = "Especie")
-
 ```
 
-Explorando otras [paletas](https://github.com/EmilHvitfeldt/r-color-palettes)
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
-```{r}
-```
+Explorando otras
+[paletas](https://github.com/EmilHvitfeldt/r-color-palettes)
 
 ## Cambiando la posición de la legenda
 
-Los valores válidos para el argumento legend.position son: “left”,“top”, “right”, “bottom”.
-También los podemos posicionar utilizando un vector numérico c(x,y) con valores de 0 a 1. 
-c(0,0) corresponde a la posición “abajo-izquierda” y c(1,1) a “arriba-derecha”. 
+Los valores válidos para el argumento legend.position son: “left”,“top”,
+“right”, “bottom”. También los podemos posicionar utilizando un vector
+numérico c(x,y) con valores de 0 a 1. c(0,0) corresponde a la posición
+“abajo-izquierda” y c(1,1) a “arriba-derecha”.
 
-```{r}
+``` r
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(color = species)) + 
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
@@ -196,13 +199,17 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        y = "masa corporal (g)",
        color = "Especie") + 
   theme(legend.position = "top")
+```
+
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+``` r
   # theme(legend.position = c(0.2, 0.7))
 ```
 
 ## Elimando la legenda, los títulos de los ejes y las marcas de los ejes
 
-```{r}
-
+``` r
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(color = species)) + 
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
@@ -216,14 +223,17 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
         axis.ticks = element_blank())
 ```
 
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 ### Cambiando la posición del título principal y la apariencia de la fuente
 
-Los argumentos más útiles de la función **element_text()** son: _*color, size, face, family*_
-Para ajustar la posición horizontal (hjust) o vertical (vjust) podemos utilizar los mismos valores entre 0 y 1 que usamos antes, donde 0 corresponde a la “izquierda” y 1 a la  “derecha”. 
+Los argumentos más útiles de la función **element\_text()** son:
+*_color, size, face, family_* Para ajustar la posición horizontal
+(hjust) o vertical (vjust) podemos utilizar los mismos valores entre 0 y
+1 que usamos antes, donde 0 corresponde a la “izquierda” y 1 a la
+“derecha”.
 
-```{r}
-
+``` r
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(color = species)) + 
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
@@ -234,15 +244,17 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        color = "Especie") + 
   theme(plot.title = element_text(hjust = 0.5, face = "bold"),
         plot.subtitle = element_text(hjust = 0.5, face = "italic"))
-
 ```
+
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 ## Agregando un tema
 
-Tenemos muchas opciones disponibles para elegir como tema en ggplot2. [Aquí](https://ggplot2.tidyverse.org/reference/ggtheme.html) hay un listado de las opciones básicas.
+Tenemos muchas opciones disponibles para elegir como tema en ggplot2.
+[Aquí](https://ggplot2.tidyverse.org/reference/ggtheme.html) hay un
+listado de las opciones básicas.
 
-```{r}
-
+``` r
 grafico_pinguinos <- ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point(aes(color = species)) + 
   scale_color_manual(values = c("darkorange","purple","cyan4")) +
@@ -258,15 +270,17 @@ grafico_pinguinos <- ggplot(data = pinguinos, aes(x = flipper_length_mm, y = bod
 grafico_pinguinos
 ```
 
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+
 ## cómo guardar tu gráfico
 
-```{r}
+``` r
 ggsave("~/grafico_pinguinos.png", grafico_pinguinos, width = 7, height = 6)
 ```
 
 ## Extra: cómo resaltar los gráficos
 
-```{r}
+``` r
 library(gghighlight)
 
 ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) + 
@@ -280,27 +294,28 @@ ggplot(data = pinguinos, aes(x = flipper_length_mm, y = body_mass_g)) +
        y = "masa corporal (g)") + 
   theme(plot.title = element_text(hjust = 0.5, face = "bold"),
         plot.subtitle = element_text(hjust = 0.5, face = "italic"))
-
 ```
 
+![](personaliza_tus_graficos_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
-__Otros recursos:__
+**Otros recursos:**
 
-- [R para Ciencia de Datos](https://es.r4ds.hadley.nz/visualizaci%C3%B3n-de-datos.html)
+  - [R para Ciencia de
+    Datos](https://es.r4ds.hadley.nz/visualizaci%C3%B3n-de-datos.html)
 
-- [R Graphics Cookbook](https://r-graphics.org/)
+  - [R Graphics Cookbook](https://r-graphics.org/)
 
-- [ggplot](https://ggplot2.tidyverse.org/index.html)
+  - [ggplot](https://ggplot2.tidyverse.org/index.html)
 
-- [Data Visualization with ggplot2](https://viz-ggplot2.rsquaredacademy.com/index.html)
+  - [Data Visualization with
+    ggplot2](https://viz-ggplot2.rsquaredacademy.com/index.html)
 
-- [Data Visualization with R](https://rkabacoff.github.io/datavis/)
+  - [Data Visualization with R](https://rkabacoff.github.io/datavis/)
 
-- [Sthda](http://www.sthda.com/english/wiki/ggplot2-point-shapes)
+  - [Sthda](http://www.sthda.com/english/wiki/ggplot2-point-shapes)
 
-- [Datanovia](https://www.datanovia.com)
+  - [Datanovia](https://www.datanovia.com)
 
-- [Colors](http://html-color-codes.com/)
-
+  - [Colors](http://html-color-codes.com/)
 
 [pingüinos](https://es.greenpeace.org/es/noticias/cual-es-top-de-los-tops-pinguinos-de-la-antartida/)
