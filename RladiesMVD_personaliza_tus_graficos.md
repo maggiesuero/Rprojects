@@ -11,7 +11,9 @@ Maggie Suero
 
 *(Artwork by @allison\_horst)*
 
-## Gramática o estructura \[@CedScherer\](<https://twitter.com/CedScherer/status/1229418108122783744/photo/1>)
+## Gramática o estructura
+
+\[@CedScherer\](<https://twitter.com/CedScherer/status/1229418108122783744/photo/1>)
 
 1.  Datos (datos que queremos visualizar)
 2.  Estéticas (mapeo estético de los objetos)
@@ -297,10 +299,12 @@ grafico_pinguinos <- ggplot(data = pinguinos, aes(x = largo_aleta_mm, y = masa_c
   labs(title = "Tamaño de los pingüinos, Estación Palmer LTER",
        subtitle = "Largo de la aleta y masa corporal por especie",
        x = "largo aleta (mm)",
-       y = "masa corporal (g)") +
+       y = "masa corporal (g)",
+       caption = "@G33kyCats") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold"),
-        plot.subtitle = element_text(hjust = 0.5, face = "italic"))
+        plot.subtitle = element_text(hjust = 0.5, face = "italic"),
+        plot.caption = element_text(face = "italic", size = 10))
 
 grafico_pinguinos
 ```
@@ -310,7 +314,7 @@ grafico_pinguinos
 ## cómo guardar tu gráfico
 
 ``` r
-ggsave("~/grafico_pinguinos.png", grafico_pinguinos, width = 7, height = 6)
+ggsave("C:/Users/Maggie/OneDrive/aR/Rprojects/grafico_pinguinos.png", grafico_pinguinos, width = 7, height = 6)
 ```
 
 ## Extra: cómo resaltar los gráficos
