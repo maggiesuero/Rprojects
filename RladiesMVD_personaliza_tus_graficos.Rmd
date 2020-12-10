@@ -309,24 +309,17 @@ __Otros recursos:__
 
 - [R Graphics Cookbook](https://r-graphics.org/) 
 
-- [ggplot](https://ggplot2.tidyverse.org/index.html)
-
 - [Data Visualization with ggplot2](https://viz-ggplot2.rsquaredacademy.com/index.html)
 
 - [Data Visualization with R](https://rkabacoff.github.io/datavis/)
 
 - [Sthda](http://www.sthda.com/english/wiki/ggplot2-point-shapes)
 
-- [Datanovia](https://www.datanovia.com)
-
-- [Colors](http://html-color-codes.com/)
-
-
 
 ```{r}
 ```
 
-#Bonus Track: Recursos y Comunidades R
+# Bonus Track: Recursos y Comunidades R
 
 - [Comunidad R para Ciencia de Datos](https://twitter.com/r4ds_es)
 

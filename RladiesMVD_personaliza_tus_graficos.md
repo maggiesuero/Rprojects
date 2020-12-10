@@ -350,8 +350,6 @@ ggplot(data = pinguinos, aes(x = largo_aleta_mm, y = masa_corporal_g)) +
 
   - [R Graphics Cookbook](https://r-graphics.org/)
 
-  - [ggplot](https://ggplot2.tidyverse.org/index.html)
-
   - [Data Visualization with
     ggplot2](https://viz-ggplot2.rsquaredacademy.com/index.html)
 
@@ -359,11 +357,7 @@ ggplot(data = pinguinos, aes(x = largo_aleta_mm, y = masa_corporal_g)) +
 
   - [Sthda](http://www.sthda.com/english/wiki/ggplot2-point-shapes)
 
-  - [Datanovia](https://www.datanovia.com)
-
-  - [Colors](http://html-color-codes.com/)
-
-\#Bonus Track: Recursos y Comunidades R
+# Bonus Track: Recursos y Comunidades R
 
   - [Comunidad R para Ciencia de Datos](https://twitter.com/r4ds_es)
 
